@@ -1,0 +1,147 @@
+product-template.liquid
+	{% if section.settings.richtext_product %}
+
+
+
+
+	<div class="product__policies">
+
+
+	 {{ section.settings.richtext_product }}
+
+
+	</div>
+
+
+	{% endif %}
+
+
+
+
+
+
+	{% if section.settings.tags_tallas != blank %}
+
+
+		{% for tag in product.tags %}
+
+
+			{% if tag contains section.settings.tags_tallas %}
+
+
+			 {% if section.settings.image_tallas %}
+
+
+				<a href="{{ section.settings.image_tallas | img_url: "master" }}" data-fancybox class="btn btn--small">Ver Guía de tallas</a>
+
+
+			 {% endif %}
+
+
+			{% endif %}
+
+
+		{% endfor %}
+
+
+	{% else %}
+
+
+	 {% if section.settings.image_tallas %}
+
+
+		 <a href="{{ section.settings.image_tallas | img_url: "master" }}" data-fancybox class="btn btn--small">Ver Guía de tallas</a>
+
+
+	 {% endif %}
+
+
+	{% endif %}
+
+schema.liquid
+
+
+	{
+
+
+
+
+		"type": "header",
+
+
+		"content": "Personaliza producto"
+
+
+	},
+
+
+	{
+
+
+		"type": "image_picker",
+
+
+		"id": "image_tallas",
+
+
+		"label": "Imagen de tallas"
+
+
+	},
+
+
+	{
+
+
+		"type": "text",
+
+
+		"id": "tags_tallas",
+
+
+		"label": "Tag de tallas"
+
+
+	},
+
+
+	{
+
+
+		"type": "richtext",
+
+
+		"id": "richtext_product",
+
+
+		"label": "Texto en producto"
+
+
+	}
+
+
+
+
+theme.liquid
+
+
+{% if request.page_type == "product" %}
+
+
+
+
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+
+
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+
+
+	<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+
+{% endif %}
+
+
+
+
+
