@@ -1,0 +1,27 @@
+whatsapp-button.liquid:
+
+{% if product.available %}
+<a href="https://api.whatsapp.com/send?phone=MINUMERO&text=¡Hola! Me interesa este producto:
+{{ product.title }} - {{ shop.url }}{{ product.url }}" target="_blank" rel="noopener noreferrer" class="whatsapp-button">
+Comprar por WhatsApp</a>
+{% endif %}
+<style>
+.whatsapp-button {
+width: 100%;
+justify-content: center;
+text-align:center;
+display: inline-block;
+background-color: green;
+color: white;
+padding: 10px 20px;
+border-radius: 5px;
+text-decoration: none;
+font-size: 16px;
+}
+.whatsapp-button:hover {
+background-color: darkgreen;
+}</style>
+
+Liquid personalizado:
+
+{%- render 'whatsapp-button' -%}
