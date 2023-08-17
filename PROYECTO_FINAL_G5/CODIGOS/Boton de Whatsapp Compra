@@ -1,3 +1,5 @@
+/// Se agrega en la parte de fragmentos, creamos un archivo llamado Whatsapp-button y pegamos el siguiente codigo///
+
 whatsapp-button.liquid:
 
 {% if product.available %}
