@@ -1,5 +1,5 @@
 
--/// Se agrega en el apartado de product-template///
+-/// Se agrega en el apartado de  main-product///
 
 product-template.liquid
 	{% if section.settings.richtext_product %}
