@@ -1,0 +1,104 @@
+// TEMPORIZADOR Ubicacion en: theme.liquid(Head):
+
+
+theme.liquid(Head):
+
+<script async src="//code.jquery.com/jquery-3.6.0.min.js"></script>
+{{ 'countdown.js' | asset_url | script_tag }}
+{{ 'countdown.css' | asset_url | stylesheet_tag }}
+
+// Crear un metadato en el panel de control
+
+Countdown.js:
+var countDownDate = new Date("Jul 21, 2023 22:30:00").getTime();
+// Update the count down every 1 second
+var x = setInterval(function() {
+// Get today's date and time
+var now = new Date().getTime();
+// Find the distance between now and the count down date
+var distance = countDownDate - now;
+// Time calculations for days, hours, minutes and seconds
+var days = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, "0");
+var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, "0");
+var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, "0");
+var seconds = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, "0");
+// Display the result in the element with id="countdown"
+document.getElementById("days").innerHTML = days;
+document.getElementById("hours").innerHTML = hours;
+document.getElementById("minutes").innerHTML = minutes;
+document.getElementById("seconds").innerHTML = seconds;
+// If the count down is finished, write some text
+if (distance < 0) {
+clearInterval(x);
+document.getElementById("countdown").innerHTML = "La oferta ha terminado.";
+} }, 1000);
+
+
+Countdown.css:
+
+#countdown-wrapper {
+/* Color de fondo */
+background-color: #dadce0;
+/* Color fuente - textos */
+color: #1e1e1e;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+font-size: 18px;
+}
+#countdown-header {
+padding: 1px;
+text-align: center;
+font-size: 22px;
+font-weight: bold;
+}
+#countdown-header2 {
+padding: 1px;
+font-size: 12px;
+text-align: center;
+}
+#countdown {
+display: flex;
+justify-content: center;
+align-items: center;
+flex-wrap: wrap;
+font-size: 10px;
+text-align: center;
+}
+#countdown > div {
+flex-direction: column;
+align-items: center;
+margin: 0 10px;
+}
+#countdown > div > span {
+font-size: 25px;
+font-weight: bold;
+/* Color de fondo de numeros */
+background-image: radial-gradient(circle at 50% -20.71%, #a3a7ff 0, #7a8ffc 25%, #3c78f2 50%, #0063e8 75%, #0051de 100%);
+/* Color de numeros*/
+color: #ffffff;
+padding: 5px;
+border-radius: 5px;
+margin-top: 5px;
+margin-bottom: 5px;
+text-align: center;
+
+
+Liquid Personalizado:
+
+{% if product.metafields.custom.countdown %}
+<div id="countdown-wrapper">
+<div id="countdown-header"> {{ product.metafields.custom.countdown}}</div>
+<div id="countdown-header2">La oferta termina en:</div>
+<div id="countdown">
+<div>
+<span id="days">00</span>
+<p>Días</p>
+</div><div>
+<span id="hours">00</span>
+<p>Horas</p></div><div>
+<span id="minutes">00</span>
+<p>Minutos</p></div><div>
+<span id="seconds">00</span><p>Segundos</p></div></div></div>
+{% endif %}
