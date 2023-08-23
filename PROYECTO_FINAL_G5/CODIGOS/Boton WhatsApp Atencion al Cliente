@@ -1,0 +1,47 @@
+//Creamos un Fragmento llamado whatsapp-button.liquid.
+//Copiamos el siguiente codigo
+
+
+<div class="whatsapp-notification">
+  <div class="notification-message">
+    <p>¡Atención al cliente!</p>
+    <a href="https://api.whatsapp.com/send?phone=593980021007&text=¡Hola! Me interesa conocer mas sobre sus productos: {{ product.title }} - {{ shop.url }}{{ product.url }}" target="_blank" rel="noopener noreferrer" class="whatsapp-button">Contáctanos en WhatsApp</a>
+  </div>
+</div>
+
+<style>
+.whatsapp-notification {
+  position: relative;
+  display: inline-block;
+}
+
+.notification-message {
+  position: absolute;
+  top: -30px;
+  right: -10px;
+  background-color: #25D366;
+  color: #000;
+  padding: 5px 10px;
+  font-size: 14px;
+  border-radius: 5px;
+  z-index: 9999;
+}
+
+.whatsapp-button {
+  display: inline-block;
+  background-color: #25D366;
+  color: #000;
+  padding: 8px 16px;
+  font-size: 14px;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.whatsapp-button:hover {
+  background-color: #25D366;
+}
+</style>
+
+// Creamos un Liquid personalizado en la personalizacion del tema y agregamos el siguiente codigo.
+
+{%- render 'whatsapp-button' -%}
